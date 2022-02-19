@@ -1,0 +1,162 @@
+<ion-app>
+  <div>
+    <ion-menu id="menu" side="start" contentId="main-content" type="overlay">
+      <ion-header>
+        <ion-toolbar>
+          <ion-img src="/assets/img/logoblanco.png" style="width: 60%; margin: auto;"></ion-img>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list id="sidenav">
+          <div>
+            <ion-menu-toggle>
+              <ion-item class="itemList" routerLink="/home/dashboard/" routerLinkActive="active">
+                <ion-icon class="icon-svg icon-dashboard"></ion-icon>
+                DashBoard
+              </ion-item>
+              <ion-item class="itemList" routerLink="/home/field" routerLinkActive="active">
+                <ion-icon class="icon-svg icon-campo"></ion-icon>
+                Campos
+              </ion-item>
+              <ion-item class="itemList" routerLink="/home/lots" routerLinkActive="active">
+                <ion-icon class="icon-svg icon-lote"></ion-icon>
+                Lotes
+              </ion-item>
+              <ion-item class="itemList" routerLink="/home/campaign" routerLinkActive="active">
+                <ion-icon class="icon-svg icon-campana"></ion-icon>
+                Campañas
+              </ion-item>
+            </ion-menu-toggle>
+            <ion-item class="itemList sinLinea" (click)="showActivities()">
+              <ion-icon class="icon-svg icon-actividades"></ion-icon>
+              Actividades
+            </ion-item>
+            <ion-menu-toggle>
+              <ion-item-group submenu [class.visible]="showActs">
+                <ion-item class="itemSub" submenu-item routerLink="/home/list-fertilization" routerLinkActive="active">
+                  <ion-icon class="icon-svg icon-fertilizacion"></ion-icon>
+                  Fertilización
+                </ion-item>
+                <ion-item class="itemSub" submenu-item routerLink="/home/list-planting" routerLinkActive="active">
+                  <ion-icon class="icon-svg icon-siembra"></ion-icon>
+                  Siembra
+                </ion-item>
+                <ion-item class="itemSub" submenu-item routerLink="/home/list-spray" routerLinkActive="active">
+                  <ion-icon class="icon-svg icon-pulverizacion"></ion-icon>
+                  Pulverización
+                </ion-item>
+                <ion-item class="itemSub" submenu-item routerLink="/home/list-harvesting" routerLinkActive="active">
+                  <ion-icon class="icon-svg icon-cosecha"></ion-icon>
+                  Cosecha
+                </ion-item>
+              </ion-item-group>
+              <ion-item class="itemList" routerLink="/home/storage-log/" routerLinkActive="active">
+                <ion-icon class="icon-svg icon-almacenamiento"></ion-icon>
+                Almacenamiento
+              </ion-item>
+              <ion-item class="itemList" routerLink="/home/list-machinery-farmer" routerLinkActive="active">
+                <ion-icon class="icon-svg icon-maquina"></ion-icon>
+                Maquinaria
+              </ion-item>
+              <ion-item class="itemList" routerLink="/home/extended-weather/" routerLinkActive="active">
+                <ion-icon class="icon-svg icon-clima"></ion-icon>
+                Clima
+              </ion-item>
+              <ion-item class="itemList" routerLink="/home/packaging/" routerLinkActive="active">
+                <ion-icon class="icon-svg icon-clima"></ion-icon>
+                Envases
+              </ion-item>
+            </ion-menu-toggle>
+            <ion-item class="itemList sinLinea" (click)="showMarkets()">
+              <ion-icon class="icon-svg icon-mercados"></ion-icon>
+              Mercados
+            </ion-item>
+            <ion-menu-toggle>
+              <ion-item-group submenu [class.visible]="showMarks">
+                <ion-item class="itemSub" submenu-item routerLink="/home/market-dollar" routerLinkActive="active">
+                  <ion-icon class="icon-svg icon-circulo"></ion-icon>
+                  Dolar
+                </ion-item>
+                <ion-item class="itemSub" submenu-item routerLink="/home/market-grain" routerLinkActive="active">
+                  <ion-icon class="icon-svg icon-circulo"></ion-icon>
+                  Granos
+                </ion-item>
+              </ion-item-group>
+              <ion-item class="itemList" routerLink="/home/list-contacts/" routerLinkActive="active">
+                <ion-icon class="icon-svg icon-mensaje"></ion-icon>
+                Mensajes
+              </ion-item>
+              <ion-item class="itemList" routerLink="/home/timeline/" routerLinkActive="active">
+                <ion-icon class="icon-svg icon-mensaje"></ion-icon>
+                Historial
+              </ion-item>
+            </ion-menu-toggle>
+          </div>
+          <div>
+            <!-- MODO OSCURO -->
+            <ion-item class="darkmode">
+              <ion-icon class="iconoLuna" name="moon-outline"></ion-icon>
+              Modo oscuro
+              <ion-toggle slot="end" #toggleComponent (ionChange)="change($event)"></ion-toggle>
+            </ion-item>
+          </div>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content">
+    </ion-router-outlet>
+  </div>
+
+  <ion-header id="safeArea">
+    <ion-toolbar>
+      <div class="contenedorHeader">
+        <div class="flexTitulo">
+          <ion-buttons slot="start">
+            <ion-menu-button>
+              <ion-button>
+                <ion-icon slot="icon-only" class="icon-svg icon-menu"></ion-icon>
+              </ion-button>
+            </ion-menu-button>
+          </ion-buttons>
+          <h1> {{this.nameUser}} </h1>
+        </div>
+        <div class="contenedorIzq">
+          <ion-buttons id="boxNotification" class="btnNotification" slot="end" (click)="toggleNotifi()">
+            <ion-icon slot="icon-only" class="icon-svg icon-notificacion"></ion-icon>
+            <ion-badge *ngIf="this.qNotifications > 0 ">{{this.qNotifications}}</ion-badge>
+          </ion-buttons>
+
+          <div id="cPerson" (click)="toggleDetails(showDetails)">
+            <ion-buttons>
+              <div *ngIf="imgUrl != '0'; else Icono">
+                <ion-avatar>
+                  <ion-img [src]="this.imgUrl" height="60" width="60"> </ion-img>
+                </ion-avatar>
+              </div>
+              <ng-template #Icono>
+                <ion-icon id="person" slot="icon-only" name="person-circle"></ion-icon>
+              </ng-template>
+            </ion-buttons>
+          </div>
+        </div>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+  <div id="otherMenu" class="contentOtherMenu" style="position: absolute;" [ngStyle]="{'top.px': bodyPosition()}">
+    <ion-list *ngIf="showDetails" class="otherMenu">
+      <ion-item class="itemList" routerLink="/home/userpanel/" routerLinkActive="active">
+        <ion-icon class="icon-svg icon-configuracion"></ion-icon>
+        Configuración
+      </ion-item>
+      <ion-item class="itemList" (click)="closeSessionApp()" routerLinkActive="active">
+        <ion-icon class="icon-svg icon-logout"></ion-icon>
+        Cerrar Sesion
+      </ion-item>
+      <ion-item class="itemList" (click)="exitApp()" routerLinkActive="active">
+        <ion-icon class="icon-svg icon-close-session"></ion-icon>
+        Salir
+      </ion-item>
+    </ion-list>
+  </div>
+  <app-notifications *ngIf="this.global.notificationsDown" (qNotifications)="loadNotifications($event)"></app-notifications>
+</ion-app>

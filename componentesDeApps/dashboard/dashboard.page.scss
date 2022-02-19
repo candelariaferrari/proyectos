@@ -1,0 +1,164 @@
+@import "../../../theme/colors";
+@import "../../../theme/buttons";
+@import "../../../theme/icon-svg";
+@import "../../../theme/ios";
+@import "../../../theme/alert";
+
+ion-scroll[scrollx="true"] {
+  position: relative;
+  overflow: hidden;
+}
+ion-scroll[scrollx="true"] {
+  overflow-x: scroll !important;
+}
+ion-content:not([scrollable]) {
+  --overflow: hidden;
+}
+
+.cuerpo{
+  overflow-y: scroll;
+  margin-bottom: 150px;
+}
+/* CARD CLIMA */
+ion-card.contenedorClima {
+  border-radius: 15px;
+  margin: 16px 10px;
+  position: relative;
+  box-shadow: 5px 5px 10px rgba(34, 34, 36, 0.104);
+  ion-card-header {
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    .clima {
+      font-family: $font;
+      text-align: center;
+      .grados {
+        font-size: 45px;
+        font-weight: 600;
+        margin-bottom: -5px;
+      }
+      .ubicacion {
+        font-size: 10px;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+      .descripcion {
+        font-size: 8px;
+        font-weight: normal;
+      }
+    }
+  }
+  ion-card-content {
+    font-family: $font;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    .contentGrados {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      .gradosc {
+        font-size: 15px;
+        font-weight: 600;
+      }
+      .texto {
+        font-size: 8px;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+/* ACTIVIDADES */
+div[scrollx="true"] {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  .scroll-item {
+    flex: 0 0 auto;
+  }
+}
+ion-card.activity {
+  width: 30vw;
+  height: 25vh;
+  border-radius: 15px;
+  margin: 16px 10px;
+  position: relative;
+  box-shadow: 5px 5px 10px rgba(34, 34, 36, 0.104);
+  ion-card-header {
+    display: flex;
+    flex-direction: column !important;
+    justify-content: center;
+    align-items: center;
+    ion-icon {
+      font-size: 2rem;
+    }
+  }
+  ion-card-content {
+    p {
+      text-align: center;
+      font-size: 0.7rem !important;
+    }
+  }
+}
+
+.contenedorMapa {
+  height: 75vh !important;
+  width: 95%;
+  border-radius: 55px !important;
+  
+  margin: 16px 10px 50px;
+  //position: relative;
+  box-shadow: 5px 5px 10px rgba(34, 34, 36, 0.104);
+}
+
+/* .cSugerencias {
+  padding-bottom: 3rem;
+  .card {
+    @extend %stats-cards-dash;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 15rem;
+    padding: 2rem 1rem;
+  }
+  .cContenedor {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    .icon-svg {
+      background-color: $verdeclaro;
+      font-size: 30px;
+    }
+    .cText {
+      .titulo {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: -5px;
+      }
+      .diaHora {
+        font-size: 10px;
+        color: var(--ion-color-texto);
+      }
+    }
+    .iconGuardar {
+      background-color: $verdeoscuro;
+      padding: 5px;
+      border-radius: 50px;
+      width: 1.5rem;
+      height: 1.5rem;
+      color: var(--ion-color-texto);
+    }
+  }
+} */

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Mercado Liebre</title>
+</head>
+
+<body>
+  <form action="#" method="post" class="formRegister">
+    <p>
+      <input type="text" name="Nombre" id="Nombre" placeholder="Nombre y Apellido">
+    </p>
+    <p>
+      <input type="text" name="usuario" id="usuario" placeholder="Nombre de usuari@">
+    </p>
+    <p>
+      <input type="email" name="usuario" id="usuario" placeholder="Email">
+    </p>
+    <h2>Fecha de nacimiento</h2>
+    <p>
+      <input type="date" name="cumpleaños" value="YYYY-MM-DD" min="1940-01-01" max="2000-01-01"
+        placeholder="mm/dd/yyyy">
+    </p>
+    <p>
+      <input type="text" name="domicilio" id="domicilio" placeholder="Domicilio">
+    </p>
+    <p class="perfilUsuario">
+      <label for="perfil">Perfil de usuario</label>
+      <div class="contentInput">
+          <input type="radio" name="perfil" id="perfil" value="Comprar">
+          Comprar
+          <input type="radio" name="perfil" id="perfil" value="Vender">
+          Vender 
+      </div>
+    </p>
+    <p class="categoriaInteres">
+      <label>Interes</label>
+      <div class="interest">
+        <div class="flexInterest">
+          <input type="checkbox" name="interes" value="electro">Electro
+        </div>
+        <div class="flexInterest">
+          <input type="checkbox" name="interes" value="moda">Moda
+        </div>
+        <div class="flexInterest">
+          <input type="checkbox" name="interes" value="hogar">Hogar
+        </div>
+        <div class="flexInterest">
+          <input type="checkbox" name="interes" value="jugueteria">Jugueteria
+        </div>
+        <div class="flexInterest">
+          <input type="checkbox" name="interes" value="vida-sana">Vida Sana
+        </div>
+      </div>
+    </p>
+    <p class="picture">
+      <label for="picture">Foto de usuario</label>
+      <input type="file" name="picture" accept=".jpg">
+    </p>
+    <p>
+      <input type="password" name="password" id="password" placeholder="Contraseña">
+    </p>
+    <p>
+      <input type="password" name="confirm-pass" id="confirm-pass" placeholder="Confirmacion de contraseña">
+    </p>
+    <div class="contentBtn">
+    
+      <button type="reset" class="delete">
+        Borrar
+      </button>
+      <button type="submit" class="send">
+        <a href="/">Enviar</a>
+      </button>
+    </div>
+  </form>
+</body>
+
+</html>

@@ -1,0 +1,204 @@
+@import "../../../../variables/colors";
+@import "../../../../variables/card";
+@import "../../../../variables/icons";
+@import "../../../../variables/buttons";
+.contentOne{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.climaPrueba{
+  width: 24vw;
+}
+.actividadPrueba{
+  width: 22vw;
+  height: 30vh;
+  @extend %card;
+  padding: 15px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  .contentAct {
+    background-color: $gris-claro;
+    border-radius: 20px;
+    padding: 10px 15px;
+    margin: 0px 0px 15px 0px;
+    text-align: left;
+    mat-icon {
+      fill: $azul-oscuro;
+      width: 20px;
+      height: 20px;
+      margin-right: 1.5em;
+    }
+    div {
+      color: $azul-oscuro;
+      text-align: left;
+      font-size: 12px;
+    }
+    .activity {
+      width: 8em;
+    }
+    .create {
+      width: 4em;
+    }
+    .field {
+      width: 11em;
+    }
+  }
+}
+.contenedorMapaPrueba {
+  @extend %card;
+  width: 50vw;
+  height: 60vh;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 35vw 40vw;
+  grid-template-rows: 20vh 40vh;
+  gap: 3.5em 2em;
+  grid-template-areas:
+    "clima mapa"
+    "actividad mapa";
+}
+.clima {
+grid-area: clima;
+} 
+.actividad {
+  grid-area: actividad;
+  //height: 90%;
+  @extend %card;
+  padding: 15px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  .contentAct {
+    background-color: $gris-claro;
+    border-radius: 20px;
+    padding: 10px 15px;
+    margin: 0px 0px 15px 0px;
+    text-align: left;
+    mat-icon {
+      fill: $azul-oscuro;
+      width: 20px;
+      height: 20px;
+      margin-right: 1.5em;
+    }
+    div {
+      color: $azul-oscuro;
+      text-align: left;
+      font-size: 12px;
+    }
+    .activity {
+      width: 8em;
+    }
+    .create {
+      width: 4em;
+    }
+    .field {
+      width: 11em;
+    }
+  }
+}
+.actividad {
+  .contentAct:hover {
+    background-color: $verde-oscuro;
+    mat-icon {
+      fill: $blanco;
+    }
+    div {
+      color: $blanco;
+    }
+  }
+}
+/* Estilos para motores Webkit y blink (Chrome, Safari, Opera... )*/
+
+.actividad::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.actividad::-webkit-scrollbar:vertical {
+  width: 10px;
+}
+
+.actividad::-webkit-scrollbar-button:increment,
+.contenedor::-webkit-scrollbar-button {
+  display: none;
+}
+
+.actividad::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 20px;
+  width: 5px;
+}
+.contenedorMapa {
+  grid-area: mapa;
+  @extend %card;
+ /*  display: flex;
+  justify-content: center;
+  align-items: center; */
+
+}
+.sugerencia {
+  grid-area: sugerencia;
+  height: 70%;
+  @extend %card;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.sugerencia::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.sugerencia::-webkit-scrollbar:vertical {
+  width: 10px;
+}
+
+.sugerencia::-webkit-scrollbar-button:increment,
+.contenedor::-webkit-scrollbar-button {
+  display: none;
+}
+
+.sugerencia::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 20px;
+  width: 5px;
+}
+
+/* * * PARA PRIMERA VEZ * * */
+.mat-stepper-horizontal {
+  @extend %card;
+  width: 80vw;
+}
+.mat-step-icon-state-number.mat-step-icon.mat-step-icon-selected {
+  background-color: $verde-claro !important;
+}
+
+@media only screen and (min-width: 1366px) and (min-height: 768px) {
+  .grid-container {
+    gap: 4.5em 2em !important;
+    
+  }
+  .actividad {
+    .contentAct {
+      mat-icon {
+        width: 25px;
+        height: 25px;
+        margin-right: 1em;
+      }
+      div {
+        font-size: 0.9rem;
+      }
+      .activity {
+        width: 11em;
+      }
+      .create {
+        width: 6.5em;
+      }
+      .field {
+        width: 11em;
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+<div class="grid-container">
+  <!-- clima -->
+  <div class="clima">
+    <app-weather></app-weather>
+  </div>
+  <!-- actividad -->
+  <div class="actividad" >
+    <span *ngFor="let activity of userActivities">
+      <div class="contentAct" *ngIf="activity.typeActivity == 'Fertilización' || activity.typeActivity == 'Cosecha' ||
+                                     activity.typeActivity == 'Siembra' || activity.typeActivity == 'Pulverización'"
+                                     fxLayout="row" fxLayoutAlign="start center" (click)="actividades(activity)">
+        <div>
+          <mat-icon svgIcon="actividad"></mat-icon>
+        </div>
+        <div class="activity">
+          {{ activity.typeActivity }}
+        </div>
+        <div class="create">
+          {{ activity.createdAt | date:'dd-MM'  }}
+        </div>
+        <div class="field">
+          {{ activity.idField.fieldName  }}
+        </div>
+        <div>
+          {{ activity.idLot.lotName  }}
+        </div>
+      </div>
+    </span>
+
+  </div>
+  <!-- Mapa -->
+  <div class="contenedorMapa">
+
+      <app-map-dashboard></app-map-dashboard>
+
+  </div>
+  <!-- sugerencia -->
+  <!-- <div class="sugerencia">
+    <app-suggest-list></app-suggest-list>
+  </div> -->
+ </div>
+
+
+<!-- <div (click)="privacyPolitics()">politicas</div> -->
+

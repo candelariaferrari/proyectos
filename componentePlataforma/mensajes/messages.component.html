@@ -1,0 +1,174 @@
+<div class="header">
+  <div>
+    <mat-toolbar class="backgroundClientes" fx>
+      <mat-toolbar-row>
+        <span>Mensajes</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+</div>
+<div class="contenedorMsn">
+  <div class="contentContactos">
+    <div class="cabecera">
+      <div (click)="toggleDetails()">
+        <img id="profile-img" src="../../../../assets/image/icono.png" class="online" alt="" />
+      </div>
+      <div>
+        <p>{{ userdata.firstName }} {{ userdata.lastName }}</p>
+      </div>
+      <!--  <mat-accordion id="accordionProfile">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <p>{{ userdata.firstName }} {{ userdata.lastName }}</p>
+            </mat-panel-title>
+            <mat-panel-description></mat-panel-description>
+         </mat-expansion-panel-header>
+        <div class="socialmedia">
+            <div>
+              <label for="facebook">
+                <mat-icon svgIcon="facebook"></mat-icon>
+              </label>
+              <input name="facebook" type="text" value="mikeross" />
+            </div>
+            <div>
+              <label for="instagram">
+                <mat-icon svgIcon="instagram"></mat-icon>
+              </label>
+              <input name="instagram" type="text" value="ross81" />
+            </div>
+            <div>
+              <label for="linkedin">
+                <mat-icon svgIcon="linkedin"></mat-icon>
+              </label>
+              <input name="linkedin" type="text" value="mike.ross" />
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion> -->
+    </div>
+    <div id="search">
+      <label for=""><i class="fa fa-search" aria-hidden="true"></i></label>
+      <input type="text" placeholder="Buscar contacto..." (keyup)="search($event.target.value)" autocomplete="off" />
+    </div>
+    <div id="contacts">
+      <ul>
+        <div *ngFor="let contact of userContacts ; let i = index">
+          <li class="contact" [value]=contact.id>
+            <div class="wrap">
+              <div class="flex-contact">
+                <div class="flex-nombre" (click)="selectContact(contact)">
+                  <span class="contact-status online" ></span>
+                  <img src="../../../../assets/image/icono.png" alt="" />
+                  <div class="meta" >
+                    <p class="name">{{ contact.description }}</p>
+                    <p class="preview">{{ contact.emailContact }}</p>
+                  </div>
+                </div>
+                <div class="modificar">
+                  <button mat-button [matMenuTriggerFor]="menu">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+
+                </div>
+              </div>
+            </div>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item class="modifyContact" (click)="modifyContact(contact)">
+                <mat-icon svgIcon="lapiz"></mat-icon>
+                Modificar
+              </button>
+            </mat-menu>
+          </li>
+
+        </div>
+      </ul>
+    </div>
+    <div class="botones">
+      <div id="formAdd" *ngIf="formDetails">
+        <input matInput type="text" name="description" placeholder="Nombre Contacto" autocomplete="off"
+          [(ngModel)]="newContact.description">
+        <input matInput type="text" name="email" placeholder="Email Contacto" autocomplete="off"
+          [(ngModel)]="newContact.email">
+      </div>
+      <button id="addcontact" class="addContact" (click)="addContact()">
+        <mat-icon>add_circle_outline</mat-icon>
+        <span>Agregar contacto</span>
+      </button>
+      <button id="addcontact" class="addContact" (click)="closeNewContact()" *ngIf="formDetails">
+        <mat-icon>close</mat-icon>
+        <span>Cerrar</span>
+      </button>
+    </div>
+  </div>
+  <!--   <div id="status-options" class="status" *ngIf="showDetails">
+    <ul>
+      <li id="status-online" class="active"><span class="status-circle"></span>
+        <p>Online</p>
+      </li>
+      <li id="status-away"><span class="status-circle"></span>
+        <p>Away</p>
+      </li>
+      <li id="status-busy"><span class="status-circle"></span>
+        <p>Busy</p>
+      </li>
+      <li id="status-offline"><span class="status-circle"></span>
+        <p>Offline</p>
+      </li>
+    </ul>
+  </div> -->
+  <div class="contentMensajes" *ngIf="this.dataMessage.description != '' && this.dataMessage.emailContact != ''">
+    <div class="headerChat">
+      <div class="contact">
+        <img src="../../../../assets/image/icono.png" alt="" />
+        <p> {{ this.dataMessage.description }} - {{ this.dataMessage.emailContact }}
+        </p>
+      </div>
+      <div class="social-media">
+        <button mat-buttom (click)="closeChat()">
+          <mat-icon>close</mat-icon>
+        </button>
+        <!--         <mat-icon svgIcon="facebook"></mat-icon>
+        <mat-icon svgIcon="instagram"></mat-icon>
+        <mat-icon svgIcon="linkedin"></mat-icon> -->
+      </div>
+    </div>
+    <div class="messages cuerpo" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+      <mat-list class="cuerpoMensaje" #associated fxLayout="column" fxLayoutAlign="start start">
+        <mat-list-item *ngFor="let message of userMessages ; let i = index" [value]=message.id>
+          <div class="receptor" *ngIf="(message.idRecipient !== this.dataMessage.idContact)">
+            <img src="../../../../assets/image/icono.png" alt="" />
+            <div class="flextext">
+              <a class="fecha"> {{transformDate(message.createdAt)}}</a>
+              <p>{{ message.bodyMessage }}</p>
+            </div>
+            <div class="borrar">
+              <mat-icon svgIcon="borrar"></mat-icon>
+            </div>
+          </div>
+          <div class="emisor" fxLayoutAlign="end center" *ngIf="(message.idRecipient === this.dataMessage.idContact)">
+            <div class="borrar">
+              <mat-icon svgIcon="borrar"></mat-icon>
+            </div>
+            <div class="flextext">
+              <a class="fecha"> {{transformDate(message.createdAt)}}</a>
+              <p>{{ message.bodyMessage }}</p>
+            </div>
+            <img src="../../../../assets/image/icono.png" alt="" />
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div class="message-input">
+      <form action="sendMessage()">
+        <input type="text" name="mensaje" placeholder="Escriba aquí su mensaje" autocomplete="off"
+          [(ngModel)]="MessageModel.bodyMessage">
+        <div class="btnEnviar">
+          <button class="submit" (click)="sendMessage()">
+            <mat-icon>send</mat-icon>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

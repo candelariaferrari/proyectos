@@ -1,0 +1,154 @@
+@import "../../../../variables/_colors";
+@import "../../../../variables/_colors_font";
+@import "../../../../variables/_table";
+@import "../../../../variables/msn";
+
+/* @import "../../../../variables/_card"; */
+@import "../../../../variables/_buttons";
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+.backgroundClientes  {
+  background-color: transparent;
+  width: auto;
+  min-height: 35px !important;
+  height: 35px !important;
+  margin: 5px 0px 5px 0px;
+  & span {
+    font-family: $font;
+    color: $grisoscuro;
+    border-bottom: 2px solid $verde-claro;
+    font-size: 18px;
+    font-weight: normal;
+  }
+}
+
+
+.mat-dialog-title{
+  border-radius: 5px;
+  background-color: $azul-oscuro;
+  padding: 10px 70px 10px 70px;
+  mat-icon{
+    fill: $blanco!important;
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+  }
+  & .title{
+    color: $blanco;
+    font-family: $font;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 15px;
+    margin-left: 20px;
+  }
+}
+
+
+.mat-list-item-content-reverse {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  flex-direction: row!important;
+  justify-content: space-around;
+}
+.cardModify{
+    font-family: $font;
+    color: $gris-oscuro !important;
+    font-weight: 500;
+    text-transform: capitalize;
+    font-size: 10px;
+    text-align: left;
+}
+.contenedorBotones {
+  padding-top: 10px;
+  margin-bottom: 10px;
+
+}
+
+.nombreIngeniero {
+  color: $verde-oscuro;
+  font-family: $font;
+  font-weight: 800;
+  font-size: 15px;
+  text-transform: uppercase;
+  padding: 10px;
+}
+.mailIngeniero {
+  color: $azul-oscuro;
+  font-family: $font;
+  font-weight: 300;
+  font-size: 15px;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+/* MODIFICACIONES PARA EL FORM */
+form {
+  font-family: $font;
+  font-size: 15px;
+  color: $gris-claro;
+  & mat-icon {
+    float: right;
+  }
+}
+mat-label {
+  padding-left: 30px !important;
+}
+.matInput {
+  padding-left: 30px !important;
+}
+.mat-form-field-infix {
+  display: block;
+  position: relative;
+  flex: auto;
+  min-width: 0;
+}
+
+
+/* ------------- MOBILE  ------------------- */
+/* @media only screen and (max-width: 767px) {
+  .mat-dialog-title{
+    padding: 10px 30px 10px 30px;
+    border-radius: 5px;
+    background-color: $azul-oscuro;
+    & img {
+      width: 40px;
+    }
+    & .title{
+      color: $blanco;
+      font-family: $font;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-left: 20px;
+    }
+  
+  .field {
+    font-family: $font;
+    color: $gris-oscuro !important;
+    font-weight: 500;
+    text-transform: capitalize;
+    font-size: 20px;
+    text-align: left;
+    padding: 10px 30px 10px 30px;
+  }
+} */
+
+
+
+
+
+
+
+
+
+
+
